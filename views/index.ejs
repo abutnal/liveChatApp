@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <br>  <br>  
+  <style> 
+    body{
+      background: #eee;
+    }
+    #room-container{
+      height: 450px;
+    }
+  </style>
+  <div class="container row">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+          <div class="card-body">
+  <div id="room-container">
+    <% Object.keys(rooms).forEach(room => { %>
+      <div><%= room %></div>
+      <a href="/<%= room %>">Join</a>
+    <% }) %>
+  </div>
+  <form action="/room" method="POST">
+    <!-- <input name="room" type="text" required>
+    <button type="submit">New Room</button> -->
+
+              <div class="input-group btn-send input-group-lg">
+                <input type="text" class="form-control border-green" required id="message-input" name="room" placeholder="Enter room name">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-success btn-lg">Create Room</button>
+                </div>
+              </div>
+
+  </form>
+
+
+
+   </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
